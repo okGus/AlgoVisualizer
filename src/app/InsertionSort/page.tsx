@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 
-const BubbleSort = () => {
+const InsertionSort = () => {
     const [length, setLength] = useState(1);
     const [vec, setVec] = useState<number[]>([]);
 
@@ -28,15 +28,39 @@ const BubbleSort = () => {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    function removeClasses() {
+    function removeOne() {
         const oneclass = document.querySelectorAll('.one');
         oneclass.forEach(e => {
             e.classList.remove('one');
         })
+    }
+
+    function removeTwo() {
         const twoclass = document.querySelectorAll('.two');
         twoclass.forEach(e => {
             e.classList.remove('two');
         })
+    }
+
+    function removeSolved() {
+        const solve = document.querySelectorAll('.solved');
+        solve.forEach(e => {
+            e.classList.remove('solved');
+        })
+    }
+
+    function replaceOne() {
+        const oneclass = document.querySelectorAll('.one');
+        oneclass.forEach(e => {
+            e.classList.remove('one');
+            e.classList.add('solved')
+        })
+    }
+
+    function removeClasses() {
+        removeOne();
+        removeTwo();
+        removeSolved();
     }
 
     function gen() {
@@ -54,32 +78,40 @@ const BubbleSort = () => {
         return new Promise((resolve) => setTimeout(resolve, ms));
     }
 
-    const bubble_sort = async () => {
-        let temp = 0;
+    const insertion_sort = async () => {
         let arr = [...vec];
+        let i, key, j;
+        for (i = 1; i < arr.length; i++) {
+            key = arr[i];
+            j = i - 1;
 
-        for (let i = 1; i < arr.length; i++) {
-            removeClasses();
-            for (let j = 0; j < arr.length - 1; j++) {
-                removeClasses();
+            while (j >= 0 && arr[j] > key) {
+                const jminus = document.getElementById(j.toString());
+                const jplus = document.getElementById((j + 1).toString());
 
-                const onea = document.getElementById(j.toString());
-                const twoa = document.getElementById((j + 1).toString());
-                onea?.classList.add('two');
-                twoa?.classList.add('two');
-                if (arr[j] > arr[j + 1]) {
-                    twoa?.classList.remove('two');
-                    twoa?.classList.add('one');
-                
-                    temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                    setVec([...arr]);
+                if (jminus?.classList.contains('solved')) {
+                    jminus.classList.remove('solved');
                 }
+
+                jminus?.classList.add('two');
+                jplus?.classList.add('two');
+                await delay(500);
+                arr[j + 1] = arr[j];
+                jplus?.classList.remove('two');
+                jplus?.classList.add('one');
+                await delay(500);
+                j = j - 1;
+                setVec([...arr]);
                 await delay(1000);
             }
+            arr[j + 1] = key;
+            removeTwo();
+            replaceOne();
+        
+            setVec([...arr]);
+            document.getElementById(j.toString())?.classList.add('solved');
+            document.getElementById((j + 1).toString())?.classList.add('solved');
         }
-        removeClasses();
     }
 
     return (<>
@@ -96,7 +128,7 @@ const BubbleSort = () => {
                         </button>
                     </ul>
                     <ul>
-                        <button className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-px px-3 rounded-2xl" onClick={() => bubble_sort()}>Sort</button>
+                        <button className="bg-blue-400 hover:bg-blue-700 text-white font-bold py-px px-3 rounded-2xl" onClick={() => insertion_sort()}>Sort</button>
                     </ul>
                 </div>
             </div>
@@ -109,4 +141,4 @@ const BubbleSort = () => {
     </>)
 };
 
-export default BubbleSort;
+export default InsertionSort;

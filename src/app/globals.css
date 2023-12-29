@@ -13,3 +13,7 @@ div[id] {
 .two {
   background-color: darkviolet;
 }
+
+.solved {
+  background-color: greenyellow;
+}

@@ -12,6 +12,11 @@ const Navbar = () => {
                   <p>Bubble Sort</p>
                 </Link>
               </li>
+              <li>
+                <Link href="/InsertionSort">
+                  <p>Insertion Sort</p>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
