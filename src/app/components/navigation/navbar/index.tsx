@@ -7,12 +7,12 @@ const Navbar = () => {
         <div className="container mx-auto px-4 h-full">
           <div className="flex justify-between items-center h-full">
             <ul className="hidden md:flex gap-x-6 text-white">
-              <li>
+              <li className="link yap">
                 <Link href="/BubbleSort">
                   <p>Bubble Sort</p>
                 </Link>
               </li>
-              <li>
+              <li className="link yap">
                 <Link href="/InsertionSort">
                   <p>Insertion Sort</p>
                 </Link>
