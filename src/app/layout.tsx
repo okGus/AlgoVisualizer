@@ -16,8 +16,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}><Navbar />{children}</body>
+    <html lang="en" className='overflow-y-hidden'>
+      <body className={inter.className + ` overflow-y-hidden`}>
+          <Navbar />
+          <main className="min-h-screen bg-stone-100">
+            {children}
+          </main>
+        </body>
     </html>
   )
 }
