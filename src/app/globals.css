@@ -19,6 +19,10 @@ div[id] {
 }
 
 .link:hover {
+  background-color: #022D9B;
+}
+
+.active {
   background-color: #0040E0;
 }
 
