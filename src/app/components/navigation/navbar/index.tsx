@@ -24,6 +24,10 @@ const Navbar = () => {
       link: "/SelectionSort",
       title: "Selection Sort",
     },
+    {
+      link: "/MergeSort",
+      title: "Merge Sort",
+    },
   ];
 
   return (
