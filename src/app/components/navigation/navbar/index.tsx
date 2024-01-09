@@ -28,6 +28,10 @@ const Navbar = () => {
       link: "/MergeSort",
       title: "Merge Sort",
     },
+    {
+      link: "/CountSort",
+      title: "Count Sort",
+    },
   ];
 
   return (
