@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  min-height: 0;
+  min-height: 0;  
+}
+
 div[id] {
   transition: all ease 1s;
 }
