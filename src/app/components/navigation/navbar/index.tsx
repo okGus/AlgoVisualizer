@@ -32,6 +32,10 @@ const Navbar = () => {
       link: "/CountSort",
       title: "Count Sort",
     },
+    {
+      link: "/Dijkstra",
+      title: "Dijkstra's Algorithm"
+    },
   ];
 
   return (
